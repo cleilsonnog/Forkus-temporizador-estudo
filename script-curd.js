@@ -39,12 +39,15 @@ function criarElementoTarefa(tarefa) {
 
     botao.onclick = () => {
         // debugger
-        const novaDescricao = prompt("Qual é o novo nome da tarefa?")
+        const novaDescricao = prompt("Qual é o novo nome da tarefa?" tarefa.descricao)
         // console.log('Nova descrição da tarefa: ', novaDescricao)
         if (novaDescricao) {            
             paragrafo.textContent = novaDescricao
             tarefa.descricao = novaDescricao
             atualizarTarefas()
+            alert("Tarefa atualizada com sucesso!")
+        } else {
+            alert("Atualização cancelada ou valor inválido!")
         }
     }
 
@@ -124,7 +127,7 @@ const removerTarefas  = (somenteCompletas) => {
     document.querySelectorAll(seletor).forEach(elemento => {
         elemento.remove()
     })
-    tarefas = somenteCompletas ? tarefas.filter(tarefa => !tarefa.completa) : []
+    tarefas = somenteCompletas ? tarefas.filter(tarefa => !tarefa.completa) : []  // condicional ternaria tipo o if so q com ? e :
     atualizarTarefas()
 }
 
