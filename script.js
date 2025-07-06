@@ -20,6 +20,7 @@ const audioPausa = new Audio('/sons/pause.mp3');
 const audioTempoFinalizado = new Audio('./sons/beep.mp3')
 musica.loop = true
 
+const tempo = document.querySelector('.app__button-cronometro-edit')
 let tempoDecorridoEmSegundos = 15
 let intervaloId = null
 
@@ -29,6 +30,15 @@ musicaFocoInput.addEventListener('change', () => {
         musica.play()
     } else {
         musica.pause()
+    }
+})
+
+//alterando o contexto inicial do tempo para estudo
+tempo.addEventListener('click', () => {
+    const novoTempo = prompt('Digite o tempo em segundos (ex: 1500 para 25 minutos):')
+    if(novoTempo && !isNaN(novoTempo) && novoTempo >= 0) {
+        tempoDecorridoEmSegundos = novoTempo
+        maostrarTempo()
     }
 })
 
